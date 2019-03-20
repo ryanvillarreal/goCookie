@@ -1,7 +1,6 @@
 package cli
 
 import (
-	"fmt"
 	"goCookie/core"
 	"gopkg.in/urfave/cli.v1"
 	"os"
@@ -10,12 +9,12 @@ import (
 
 var (
 	flags        []cli.Flag
-	proxyaddr string
+	proxyaddr    string
 	fileLocation string
-	pics bool
-	url string
-	cookie string
-	useragent string = "User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36"
+	pics         bool
+	url          string
+	cookie       string
+	useragent    string = "User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36"
 )
 
 func init() {
@@ -32,18 +31,13 @@ func init() {
 			Destination: &fileLocation,
 		},
 		cli.StringFlag{
-			Name:        "pic, P",
-			Usage:       "--pic <s> or -p <s> Disable picture taking.",
+			Name:  "pic, P",
+			Usage: "--pic <s> or -p <s> Disable picture taking.",
 		},
 		cli.StringFlag{
-			Name:		"url,u",
-			Usage:		"--url http://localhost/dir or -u http://localhost/dir",
+			Name:        "url,u",
+			Usage:       "--url http://localhost/dir or -u http://localhost/dir",
 			Destination: &url,
-		},
-		cli.StringFlag{
-			Name:		"cookie,c",
-			Usage:		"--cookie or -c",
-			Destination: &cookie,
 		},
 	}
 }
@@ -58,14 +52,11 @@ func MenuHelp() {
 	app.Flags = flags
 	app.Action = noArgs
 	sort.Sort(cli.FlagsByName(app.Flags))
-	if app.Run(os.Args) == nil{
-		fmt.Println("made it through checks lets begin main now. ")
-		if proxyaddr != ""{
-			fmt.Println("using proxy send proxy address.")
+	if app.Run(os.Args) == nil {
+		if proxyaddr != "" {
 			core.BaseLine(url, proxyaddr)
-		} else{
-			fmt.Println("not using proxy sending a nil value.")
-			core.BaseLine(url, "", )
+		} else {
+			core.BaseLine(url, "")
 		}
 	}
 }
@@ -75,10 +66,8 @@ func noArgs(c *cli.Context) error {
 	// check for no flags first. Then make sure a URL and cookie are present.
 	if c.NumFlags() < 1 {
 		return cli.NewExitError("Please set required flags", 2)
-	} else if url == ""{
+	} else if url == "" {
 		return cli.NewExitError("URL required for operation", 2)
-	} else if cookie == ""{
-		return cli.NewExitError("Cookie required for operation", 2)
 	}
 	return nil
 }
