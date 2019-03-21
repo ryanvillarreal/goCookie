@@ -1,7 +1,7 @@
 # goCookie
-goCookie is based on the AnomalousCookie from Coalfire Research Github page.
+goCookie is based on the AnomalousCookie from Coalfire Research Github page.  https://github.com/Coalfire-Research/AnomalousCookie
 
-
+```
 NAME:
    goCookie - Usage: goCookie.exe https://www.example.com
 
@@ -26,3 +26,16 @@ GLOBAL OPTIONS:
    --target value, -t value   --target http://localhost/dir or -t http://localhost/dir
    --help, -h                 show help
    --version, -v              print the version
+```
+
+## Bugs/Progress
+1.  ~~fuzz cookies~~
+2.  ~~support GET/POST requests~~
+3.  ~~proxy support~~
+4.  ~~delay support~~
+5.  output results to a file
+6.  picture taking of web app when fuzzing cookies.  Borrowed Inspiration from goEyewitness
+7.  error handling
+8.  statistical analysis of different results (i.e. - response delays)
+9.  multi-threading
+10. add newly discovered cookies to the queue
