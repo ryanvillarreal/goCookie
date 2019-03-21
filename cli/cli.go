@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"goCookie/core"
+	"github.com/ryanvillarreal/goCookie/core"
 	"gopkg.in/urfave/cli.v1"
 	"net/url"
 	"os"
