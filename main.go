@@ -1,7 +1,7 @@
 package main
 
 import (
-	"goCookie/cli"
+	"github.com/ryanvillarreal/goCookie/cli"
 )
 
 func main(){
