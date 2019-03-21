@@ -43,8 +43,14 @@ GLOBAL OPTIONS:
 
 ## Installation
 Right now I haven't built out the setup.sh script.  I will be working on that for future releases.  
+
+Make sure to have your $GOPATH set `export GOPATH=$HOME/go` and then simply run: 
+
 ```
-git clone https://github.com/ryanvillarreal/goCookie && cd goCookie
-go build main.go
+go get github.com/ryanvillarreal/goCookie
 ```
-Now simply run main.exe
+
+Now the project should live in your $HOME/go/src/github.com/ryanvillarreal/goCookie/ .  You can simply run go like a script by using 
+`go run main.go`
+
+or you can build for your current platform using `go build main.go`
