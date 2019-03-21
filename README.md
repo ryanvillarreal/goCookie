@@ -39,3 +39,12 @@ GLOBAL OPTIONS:
 8.  statistical analysis of different results (i.e. - response delays)
 9.  multi-threading
 10. add newly discovered cookies to the queue
+
+
+## Installation
+Right now I haven't built out the setup.sh script.  I will be working on that for future releases.  
+```
+git clone https://github.com/ryanvillarreal/goCookie && cd goCookie
+go build main.go
+```
+Now simply run main.exe
