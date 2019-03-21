@@ -5,6 +5,7 @@ import (
 	"gopkg.in/urfave/cli.v1"
 	"os"
 	"sort"
+	"strings"
 )
 
 var (
@@ -14,7 +15,7 @@ var (
 	pics         bool
 	url          string
 	cookie       string
-	useragent    string = "User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36"
+	requestType  string
 )
 
 func init() {
@@ -39,6 +40,12 @@ func init() {
 			Usage:       "--url http://localhost/dir or -u http://localhost/dir",
 			Destination: &url,
 		},
+		cli.StringFlag{
+			Name:        "request,r",
+			Usage:       "--request GET/POST or -p GET/POST",
+			Value:       "GET",
+			Destination: &requestType,
+		},
 	}
 }
 
@@ -54,9 +61,9 @@ func MenuHelp() {
 	sort.Sort(cli.FlagsByName(app.Flags))
 	if app.Run(os.Args) == nil {
 		if proxyaddr != "" {
-			core.BaseLine(url, proxyaddr)
+			core.BaseLine(url, proxyaddr, requestType)
 		} else {
-			core.BaseLine(url, "")
+			core.BaseLine(url, "", requestType)
 		}
 	}
 }
@@ -68,6 +75,8 @@ func noArgs(c *cli.Context) error {
 		return cli.NewExitError("Please set required flags", 2)
 	} else if url == "" {
 		return cli.NewExitError("URL required for operation", 2)
+	} else if strings.TrimSpace(requestType) != "GET" || strings.TrimSpace(requestType) == "POST" {
+		return cli.NewExitError("Request type must be GET or POST", 2)
 	}
 	return nil
 }
