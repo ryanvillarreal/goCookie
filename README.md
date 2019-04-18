@@ -29,16 +29,17 @@ GLOBAL OPTIONS:
 ```
 
 ## Bugs/Progress
-1.  ~~fuzz cookies~~
-2.  ~~support GET/POST requests~~
-3.  ~~proxy support~~
-4.  ~~delay support~~
-5.  output results to a file
-6.  picture taking of web app when fuzzing cookies.  Borrowed Inspiration from goEyewitness
-7.  error handling
-8.  statistical analysis of different results (i.e. - response delays)
-9.  multi-threading
-10. add newly discovered cookies to the queue
+1.  Bug: Golang won't allow to send illeagal characters in a cookie.  
+2.  ~~fuzz cookies~~
+3.  ~~support GET/POST requests~~
+4.  ~~proxy support~~
+5.  ~~delay support~~
+6.  output results to a file
+7.  picture taking of web app when fuzzing cookies.  Borrowed Inspiration from goEyewitness
+8.  error handling
+9.  statistical analysis of different results (i.e. - response delays)
+10.  multi-threading
+11. add newly discovered cookies to the queue
 
 
 ## Installation
